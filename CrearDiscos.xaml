@@ -1,0 +1,30 @@
+﻿<!-- CrearDiscoWindow.xaml -->
+<Window x:Class="AppVinilos.CrearDiscos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Crear Disco" Height="300" Width="400">
+    <Grid>
+        <Label Content="Titulo:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10"/>
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,10,10,0" Width="200"/>
+
+        <Label Content="Autor:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,40,0,0"/>
+        <TextBox x:Name="txtAutor" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,40,10,0" Width="200"/>
+
+        <Label Content="Fecha:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,80,0,0"/>
+        <DatePicker x:Name="datePickerFecha" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,80,10,0" Width="200"/>
+
+        <Label Content="Numero de canciones:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,120,0,0"/>
+        <TextBox x:Name="numCanciones" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,120,10,0" Width="200"/>
+
+        <Label Content="Precio:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,160,0,0"/>
+        <TextBox x:Name="precio" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,160,10,0" Width="200"/>
+
+        <Label Content="Portada:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,200,0,0"/>
+        <Image x:Name="portada" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="140,200,0,0" Width="120" Height="72"/>
+
+        <!-- Agrega controles adicionales según sea necesario -->
+
+        <Button Content="Guardar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,240,0,0" Width="75" Click="BtnGuardar_Click"/>
+        <Button Content="Cancelar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="280,240,0,0" Width="75" Click="BtnCancelar_Click"/>
+    </Grid>
+</Window>
