@@ -3,49 +3,102 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="AppVinilos.Pago"
         Title="Pago" Height="800" Width="1000">
-    <Grid>
+    <Grid Margin="0,68,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
         <!-- Sección de dirección -->
-        <StackPanel Margin="10,100,590,-60" Width="400">
-            <TextBlock Text="Dirección de Envío" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+        <TextBlock Text="{DynamicResource Resumen}" Margin="544,45,7,617" FontWeight="Bold" FontSize="25"/>
+        <!-- Sección de dirección -->
+        <StackPanel Margin="54,72,514,43">
+            <TextBlock Text="{DynamicResource DireccionEnvio}" FontSize="25" FontWeight="Bold" Margin="0,0,0,10"/>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <TextBlock Text="Nombre:" Margin="0,0,10,0"/>
-                <TextBox Width="200"/>
+                <TextBlock Text="{DynamicResource Nombre}" Margin="0,0,170,0"/>
+                <TextBlock Text="{DynamicResource Apellidos}" Margin="0,0,10,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <TextBlock Text="Apellidos:" Margin="0,0,10,0"/>
-                <TextBox Width="200"/>
+                <TextBox Width="200" Margin="0,0,10,0" Height="31"/>
+                <TextBox Width="200" Margin="0,0,10,0" Height="31"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <TextBlock Text="Dirección:" Margin="0,0,10,0"/>
-                <TextBox Width="200"/>
+                <TextBlock Text="{DynamicResource Direccion}" Margin="0,0,10,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <TextBlock Text="Código Postal:" Margin="0,0,10,0"/>
-                <TextBox Width="200"/>
+                <TextBox Width="409" Margin="0,0,10,0" Height="31"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <TextBlock Text="Localidad:" Margin="0,0,10,0"/>
-                <TextBox Width="200"/>
+                <TextBlock Text="{DynamicResource CodPost}" Margin="0,0,135,0"/>
+                <TextBlock Text="{DynamicResource Localidad}" Margin="0,0,10,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <TextBlock Text="Provincia:" Margin="0,0,10,0"/>
-                <TextBox Width="200"/>
+                <TextBox Width="200" Margin="0,0,10,0" Height="31"/>
+                <TextBox Width="200" Margin="0,0,10,0" Height="31"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBlock Text="{DynamicResource Provincia}" Margin="0,0,10,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBox Width="200" Margin="0,0,10,0" Height="31"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBlock Text="{DynamicResource Telefon}" Margin="0,0,10,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBox Width="409" Margin="0,0,10,0" Height="31"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBlock Text="{DynamicResource email}" Margin="0,0,10,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBox Width="409" Margin="0,0,10,0" Height="31"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBlock Text="{DynamicResource Infoextra}" Margin="0,0,10,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBox Width="409" Margin="0,0,10,0" Height="71"/>
             </StackPanel>
         </StackPanel>
 
         <!-- Sección de opciones de pago -->
-        <StackPanel Margin="38,408,590,216">
-            <TextBlock Text="Opciones de Pago" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
-            <RadioButton Content="Bizum" Margin="0,0,0,10"/>
-            <RadioButton Content="Paypal" Margin="0,0,0,10"/>
-            <RadioButton Content="Tarjeta Bancaria" Margin="0,0,0,10"/>
+        <StackPanel Margin="552,358,35,190">
+            <TextBlock Text="{DynamicResource Opciones}" FontSize="20" FontWeight="Bold" Margin="0,0,0,20"/>
+            <RadioButton Content="Bizum" Margin="0,0,0,20" FontSize="20" Padding="4,-9,0,0"/>
+            <RadioButton Content="Paypal" Margin="0,0,0,20" FontSize="20" Padding="4,-9,0,0"/>
+            <RadioButton Content="Tarjeta Bancaria" Margin="0,0,0,10" FontSize="20" Padding="4,-9,0,0"/>
         </StackPanel>
+        <Button Content="{DynamicResource irpago}" HorizontalAlignment="Left" Margin="552,601,0,0" VerticalAlignment="Top" Height="72" Width="244" Click="Button_Click" FontSize="30" Background="#FF4E2828" BorderThickness="2,2,2,2"/>
+        <Image HorizontalAlignment="Left" Height="62" Margin="552,526,0,0" VerticalAlignment="Top" Width="64" Source="/Imagenes/LogoPaypal.jpg"/>
+        <Image HorizontalAlignment="Left" Height="62" Margin="648,528,0,0" VerticalAlignment="Top" Width="64" Source="/Imagenes/mastercard.png"/>
+        <Image HorizontalAlignment="Left" Height="27" Margin="754,544,0,0" VerticalAlignment="Top" Width="64" Source="/Imagenes/Bizum.png" />
 
-        <!-- Resumen del Pedido -->
-        <StackPanel Margin="0,20,0,20">
-            <TextBlock Text="Resumen del Pedido" FontSize="20"  HorizontalAlignment="Right" FontWeight="Bold" Margin="0,0,0,10"/>
-            <!-- Aquí puedes mostrar la lista de discos del pedido -->
-            <ListBox x:Name="listBoxResumen" Width="300" Height="200" HorizontalAlignment="Right" BorderThickness="1" av:ItemsSource="{av:SampleData ItemCount=5}"/>
-        </StackPanel>
+
+        <ListBox x:Name="listBoxDiscos" HorizontalAlignment="Left" VerticalAlignment="Top" Width="484" Height="242" BorderThickness="0,0,0,0" Background="White" Margin="552,85,0,0" av:ItemsSource="{av:SampleData ItemCount=5}" Grid.ColumnSpan="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="450" Height="55">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!-- Propiedades de texto -->
+                        <TextBlock Grid.Column="0" Text="{Binding Titulo}" VerticalAlignment="Center" Margin="15,0,15,10" FontSize="20"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Autor}" VerticalAlignment="Center" Margin="15,0,15,0" FontSize="20"/>
+                        <TextBlock Grid.Column="2" Text="{Binding Precio}" VerticalAlignment="Center" Margin="15,0,0,0" FontSize="20"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid VerticalAlignment="Top" HorizontalAlignment="Center" Height="109" Width="1000" Margin="0,-69,0,0">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Imagenes/6.jpg" Stretch="UniformToFill"/>
+            </Grid.Background>
+            <UniformGrid Columns="5">
+                <TextBlock Text="{DynamicResource Pago}" Margin="55,0,-36,0" Background="{x:Null}" Foreground="White" FontSize="40" FontWeight="Bold"  VerticalAlignment="Center"/>
+            </UniformGrid>
+        </Grid>
     </Grid>
 </Window>

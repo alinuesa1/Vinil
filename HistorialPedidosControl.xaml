@@ -1,34 +1,74 @@
-﻿<Window x:Class="AppVinilos.HistorialPedidosControl"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d"
-        Title="Historial de Pedidos" Height="294" Width="478">
-    <Grid Width="434" HorizontalAlignment="Left">
-        <!-- Imagen con ZIndex bajo -->
-        <Image Source="C:\Users\Usuario\Desktop\Bb\azulclaro.png" Stretch="UniformToFill" VerticalAlignment="Center" Height="280" Margin="0,0,-51,0" Panel.ZIndex="0" Width="NaN"/>
+        xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="AppVinilos.HistorialPedidosControl"
+        Title="Historial de Pedidos" Height="800" Width="1000"
+        Background="#F0F0F0" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <!-- Estilo para los TextBlocks del encabezado -->
+        <Style x:Key="HeaderTextBlockStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-        <!-- Resto de los elementos con ZIndex alto -->
-        <TextBlock Text="Historial de Pedidos" FontSize="18" FontWeight="Bold" Margin="136,10,56,20" Panel.ZIndex="1" Height="NaN" Width="NaN"/>
+        <!-- Encabezado -->
+        <Border Grid.Row="0" Grid.ColumnSpan="3" Height="200" Background="#000">
+            <Grid>
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Imagenes/10.jpg" Stretch="UniformToFill"/>
+                </Grid.Background>
+                <Button Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="BtnMain_Click" Margin="10,10,0,0" BorderThickness="0" Height="64" Width="64">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Imagenes/House-2.png"/>
+                    </Button.Background>
+                </Button>
+                <Button Grid.Row="0" Grid.Column="2" Content="?" VerticalAlignment="Top" HorizontalAlignment="Right" Click="BtnHelp_Click" Margin="0,0,10,0" BorderThickness="0" Background="Transparent" Foreground="White" FontSize="55" FontWeight="Bold"/>
+                <Button Grid.Row="0" Grid.Column="2" Content="" VerticalAlignment="Top" HorizontalAlignment="Right" Click="BtnCerrarSesion_Click" Margin="0,20,70,0" BorderThickness="0" Foreground="White" FontSize="20" FontWeight="Bold" Height="45" Width="45">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Imagenes/exit.png"/>
+                    </Button.Background>
+                </Button>
+                <TextBlock Text="{DynamicResource HistPedidos}" Grid.Row="1" Grid.ColumnSpan="3" FontWeight="Bold" FontSize="24" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+        </Border>
 
-        <!-- DataGrid con columnas personalizadas -->
-        <DataGrid ItemsSource="{Binding ListaPedidos}" AutoGenerateColumns="False" Margin="64,48,12,10" Panel.ZIndex="1" SelectionChanged="DataGrid_SelectionChanged">
-            <DataGrid.Columns>
-                <!-- Columna de Fecha -->
-                <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha}" Width="*" />
+        <!-- Columna izquierda para el ListBox -->
+        <ListBox x:Name="listBoxPedidos" SelectionChanged="ListBoxPedidos_SelectionChanged"
+                 Grid.Row="1" Grid.Column="0" Margin="0,10,10,10" Background="White" BorderBrush="#CCC" BorderThickness="1" Padding="10" av:ItemsSource="{av:SampleData ItemCount=5}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="#DDD" BorderThickness="0,0,0,1" Padding="5">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="ID Pedido:" Style="{StaticResource HeaderTextBlockStyle}"/>
+                            <TextBlock Text="{Binding IdPedido}" Margin="5,5,0,0"/>
+                            <TextBlock Text="Fecha:" Style="{StaticResource HeaderTextBlockStyle}"/>
+                            <TextBlock Text="{Binding Fecha, StringFormat=\{0:dd/MM/yyyy\}}" Margin="5,5,0,0"/>
+                            <TextBlock Text="Total:" Style="{StaticResource HeaderTextBlockStyle}"/>
+                            <TextBlock Text="{Binding Total, StringFormat=C}" Margin="5,5,0,0"/>
+                            <TextBlock Text="Estado:" Style="{StaticResource HeaderTextBlockStyle}"/>
+                            <TextBlock Text="{Binding Estado}" Margin="5,5,0,0"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
-                <!-- Columna de Producto -->
-                <DataGridTextColumn Header="Producto" Binding="{Binding Producto}" Width="*" />
-
-                <!-- Columna de Cantidad -->
-                <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}" Width="*" />
-
-                <!-- Puedes agregar más columnas según tus necesidades -->
-            </DataGrid.Columns>
-        </DataGrid>
-
-        <!-- Agregaremos mas cosas -->
+        <!-- Columna derecha para el StackPanel de detalles -->
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="10" Background="White">
+            <TextBlock Text="{DynamicResource Detallepedido}" FontWeight="Bold" FontSize="16" Margin="0,0,0,10" Foreground="#333"/>
+            <TextBlock x:Name="textBlockDetalles" Text="Seleccione un pedido para ver los detalles." TextWrapping="Wrap" Margin="5,5,5,5" Foreground="#666" Height="250" FontSize="20"/>
+        </StackPanel>
     </Grid>
 </Window>
-

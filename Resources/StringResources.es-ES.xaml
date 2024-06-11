@@ -1,0 +1,81 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!-- Login Window -->
+    <sys:String x:Key="IniciarSesión">Iniciar Sesión</sys:String>
+    <sys:String x:Key="Usuario">Usuario</sys:String>
+    <sys:String x:Key="Administrador">Administrador</sys:String>
+    <sys:String x:Key="btnInicSes">Iniciar Sesión</sys:String>
+    <sys:String x:Key="lblNoSesion">¿No tienes una cuenta?</sys:String>
+    <sys:String x:Key="Register">Registrarse</sys:String>
+
+    <!-- AdminMain Window -->
+    <sys:String x:Key="GestDiscos">Gestionar Discos</sys:String>
+    <sys:String x:Key="GestArtistas">Gestionar Artistas</sys:String>
+    <sys:String x:Key="GestOfertas">Gestionar Ofertas</sys:String>
+    <sys:String x:Key="HistPedidos">Historial de Pedidos</sys:String>
+    <sys:String x:Key="UsuarioNombre">Nombre de Usuario</sys:String>
+    <sys:String x:Key="UltimoInic">Ultimo inicio de sesión</sys:String>
+
+    <!-- DetallesDiscos Window -->
+    <sys:String x:Key="Portada">Portada</sys:String>
+    <sys:String x:Key="Titulo">Titulo</sys:String>
+    <sys:String x:Key="Autor">Autor</sys:String>
+    <sys:String x:Key="Fecha">Fecha</sys:String>
+    <sys:String x:Key="EditarDisco">Editar Disco</sys:String>
+    <sys:String x:Key="BorrarDisco">Borrar Disco</sys:String>
+    <sys:String x:Key="CrearDisco">Crear Disco</sys:String>
+
+    <sys:String x:Key="Precio">Precio</sys:String>
+    <sys:String x:Key="NumeroCanc">Numero de Canciones</sys:String>
+    <sys:String x:Key="Calificacion">Valoración</sys:String>
+    <sys:String x:Key="UnidDispo">Unidades disponibles</sys:String>
+    <sys:String x:Key="Canciones">Canciones</sys:String>
+    <sys:String x:Key="Preview">Preview</sys:String>
+    <sys:String x:Key="Guardar">Guardar</sys:String>
+    <sys:String x:Key="Cancelar">Cancelar</sys:String>
+
+    <!-- DetallesArtistas Window -->
+    <sys:String x:Key="Imagen">Imagen</sys:String>
+    <sys:String x:Key="Nombre">Nombre</sys:String>
+    <sys:String x:Key="Genero">Genero</sys:String>
+    <sys:String x:Key="Favoritos">Favoritos</sys:String>
+    <sys:String x:Key="EditarArtista">Editar Artista</sys:String>
+    <sys:String x:Key="BorrarArtista">Borrar Artista</sys:String>
+    <sys:String x:Key="CrearArtista">Crear Artista</sys:String>
+    
+    <sys:String x:Key="NombreReal">Nombre Real</sys:String>
+    <sys:String x:Key="Componentes">Componentes</sys:String>
+    <sys:String x:Key="Fecha2">Fecha de creacion o nacimiento</sys:String>
+    <sys:String x:Key="Descripcion">Descripción</sys:String>
+    <sys:String x:Key="Enlaces">Enlaces en redes sociales</sys:String>
+    <sys:String x:Key="Discografia">Discografia</sys:String>
+    
+    <sys:String x:Key="AgregarOferta">Agregar nueva oferta</sys:String>
+    <sys:String x:Key="Detallepedido">Detalles del pedido</sys:String>
+
+
+    <!-- UserMain Window -->
+    <sys:String x:Key="Discos">Discos</sys:String>
+    <sys:String x:Key="Artistas">Artistas</sys:String>
+    <sys:String x:Key="Ofertas">Ofertas</sys:String>
+    <sys:String x:Key="Historial">Historial</sys:String>
+
+    <sys:String x:Key="Id">Id de pedido</sys:String>
+    <sys:String x:Key="Total">Total</sys:String>
+    <sys:String x:Key="Estado">Estado</sys:String>
+    
+    <sys:String x:Key="Pago">Pago</sys:String>
+    <sys:String x:Key="DireccionEnvio">Dirección de envóp</sys:String>
+    <sys:String x:Key="Apellidos">Apellidos</sys:String>
+    <sys:String x:Key="Direccion">Dirección</sys:String>
+    <sys:String x:Key="CodPost">Codigo postal</sys:String>
+    <sys:String x:Key="Localidad">Localidad</sys:String>
+    <sys:String x:Key="Provincia">Provincia</sys:String>
+    <sys:String x:Key="Telefon">Teléfono</sys:String>
+    <sys:String x:Key="email">Dirección e-mail</sys:String>
+    <sys:String x:Key="Infoextra">Información adicional</sys:String>
+    <sys:String x:Key="Resumen">Resumen de pedido</sys:String>
+    <sys:String x:Key="Opciones">Opciones de pago</sys:String>
+    <sys:String x:Key="irpago">Proceder al pago</sys:String>
+    
+</ResourceDictionary>

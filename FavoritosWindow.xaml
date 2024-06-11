@@ -1,0 +1,89 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:AppVinilos"
+    xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="av"
+    x:Class="AppVinilos.FavoritosWindow"
+    Title="Discos Favoritos" Height="800" Width="1000">
+
+    <Window.Resources>
+        <local:FavoritoToImageConverter x:Key="FavoritoToImageConverter"/>
+    </Window.Resources>
+
+    <Grid>
+        <!-- Fila superior con encabezados -->
+        <Grid VerticalAlignment="Top" HorizontalAlignment="Center" Height="165" Width="1000">
+            <Grid.Background>
+                <ImageBrush ImageSource="Imagenes/15.jpg" Stretch="UniformToFill" AlignmentY="Center" AlignmentX="Center"/>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" Click="BtnMain_Click" Margin="0,0,120,0" BorderThickness="0" Height="64" Width="64">
+                <Button.Background>
+                    <ImageBrush ImageSource="Imagenes/House-2.png"/>
+                </Button.Background>
+            </Button>
+            <Button Click="BtnCarrito_Click" Grid.Row="0" Grid.Column="4" DockPanel.Dock="Bottom" HorizontalAlignment="Left" Width="50" Height="50"  Margin="00,0,0,0" FontSize="25" BorderThickness="0">
+                <Button.Background>
+                    <ImageBrush ImageSource="Imagenes/cart.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="4" Content="?" Click="BtnHelp_Click" Margin="70,2,90,0" BorderThickness="0" Background="Transparent" Foreground="White" FontSize="55" FontWeight="Bold"/>
+            <Button Grid.Row="0" Grid.Column="4" Content="" Click="BtnCerrarSesion_Click" Margin="120,0,0,0" BorderThickness="0" Foreground="White" FontSize="20" FontWeight="Bold" Height="45" Width="45">
+                <Button.Background>
+                    <ImageBrush ImageSource="Imagenes/exit.png"/>
+                </Button.Background>
+            </Button>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="{DynamicResource Portada}" Margin="10,10,16,10" Background="{x:Null}" FontSize="40" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{DynamicResource Titulo}" Margin="31,16,0,0" Background="{x:Null}" Foreground="White" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="{DynamicResource Autor}" Margin="62,16,0,0" Background="{x:Null}" FontSize="40" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+            <TextBlock Grid.Row="1" Grid.Column="3" Text="{DynamicResource Fecha}" Margin="79,0,0,0" Background="{x:Null}" Foreground="White" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="4" Text="{DynamicResource Precio}" Margin="59,0,0,0" Background="{x:Null}" Foreground="White" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        </Grid>
+        <!-- Lista de Discos Favoritos -->
+        <ListBox x:Name="listBoxFavoritos" HorizontalAlignment="Left" VerticalAlignment="Top" Width="990" Height="614" BorderThickness="0,0,0,0" Background="White" Margin="0,170,0,0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="938" Height="92">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Añadir al carrito" Click="AddToCart_Click"/>
+                                <MenuItem Header="Más detalles" Click="MoreDetails_Click"/>
+                            </ContextMenu>
+                        </Grid.ContextMenu>
+                        <!-- Imagen -->
+                        <Image Grid.Column="0" Source="{Binding Portada}" Width="80" Height="80" Margin="50,5,50,5" />
+                        <!-- Propiedades de texto -->
+                        <TextBlock Grid.Column="1" Text="{Binding Titulo}" TextAlignment="Left" VerticalAlignment="Center" Margin="15,5,15,5" FontSize="20"/>
+                        <TextBlock Grid.Column="2" Text="{Binding Autor}" TextAlignment="Left" VerticalAlignment="Center" Margin="15,5,15,5" FontSize="20"/>
+                        <TextBlock Grid.Column="3" Text="{Binding Fecha, StringFormat={}{0:dd/MM/yyyy}}" TextAlignment="Left" VerticalAlignment="Center" Margin="15,5,15,5" FontSize="20"/>
+                        <TextBlock Grid.Column="4" Text="{Binding Precio}" TextAlignment="Left" VerticalAlignment="Center" Margin="15,5,15,5" FontSize="20"/>
+                        <Button Grid.Column="5" Click="AddToFavorites_Click" Margin="5" BorderThickness="0" Background="Transparent">
+                            <Image Source="{Binding EnFavoritos, Converter={StaticResource FavoritoToImageConverter}}" Width="24" Height="24"/>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>

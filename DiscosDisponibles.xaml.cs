@@ -1,57 +1,120 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AppVinilos
 {
     
     public partial class DiscosDisponibles : Window
     {
-        List<DiscoVinilo> discos = new List<DiscoVinilo>();
-        public List<DiscoVinilo> carrito = new List<DiscoVinilo>();
-
-        // Establecer la colección como origen de datos para el ListBoxs
         public DiscosDisponibles()
         {
             InitializeComponent();
-            BitmapImage Thriller = new BitmapImage(new Uri("pack://application:,,,/Imagenes/Thriller.jpg"));
-            BitmapImage YHLQMDLG = new BitmapImage(new Uri("pack://application:,,,/Imagenes/YHLQMDLG.jpg"));
-
-            discos.Add(new DiscoVinilo { Titulo = "Thriller", Autor = "Michael Jackson", Fecha = DateTime.Now, Portada = Thriller, NumeroCanciones = 10, Precio = 20 });
-            discos.Add(new DiscoVinilo { Titulo = "YHLQMDLG", Autor = "Bad Bunny", Fecha = DateTime.Now, Portada = YHLQMDLG, NumeroCanciones = 12, Precio = 15 });
-            discos.Add(new DiscoVinilo { Titulo = "Libre", Autor = "Nino Bravo", Fecha = DateTime.Now, Portada = YHLQMDLG, NumeroCanciones = 1, Precio = 30 });
-            discos.Add(new DiscoVinilo { Titulo = "Cien gaviotas", Autor = "Duncan Dhu", Fecha = DateTime.Now, Portada = YHLQMDLG, NumeroCanciones = 22, Precio = 50 });
-            listBoxDiscos.ItemsSource = discos;
+            listBoxDiscos.ItemsSource = DiscosData.Discos;
         }
         private void AddToCart_Click(object sender, RoutedEventArgs e)
         {
-            // Obtén el elemento seleccionado del ListBox y realiza la acción correspondiente
             if (listBoxDiscos.SelectedItem is DiscoVinilo selectedDisco)
             {
-                // Agregar al carrito aquí (puedes implementar tu lógica específica)
                 MessageBox.Show($"Añadiendo al carrito: {selectedDisco.Titulo}");
-                carrito.Add( selectedDisco );
+                CarritoGlobal.AddToCarrito(selectedDisco);
+                CarritoCompra carritoCompra = new CarritoCompra();
+                carritoCompra.Show();
             }
         }
-
         private void MoreDetails_Click(object sender, RoutedEventArgs e)
         {
-            // Obtén el elemento seleccionado del ListBox y muestra más detalles
-            if (listBoxDiscos.SelectedItem is DiscoVinilo selectedDisco)
+            if (listBoxDiscos.SelectedItem is DiscoVinilo discoSeleccionado)
             {
-                MessageBox.Show("Ventana de mas detalles aun no implementada");
+                MasDetalles ventanaDetalles = new MasDetalles(discoSeleccionado);
+                ventanaDetalles.ShowDialog();
+            }
+        }
+        private void AddToFavorites_Click(object sender, RoutedEventArgs e)
+        {
+            if ((sender as FrameworkElement)?.DataContext is DiscoVinilo selectedDisco)
+            {
+                selectedDisco.EnFavoritos = !selectedDisco.EnFavoritos;
+                if (selectedDisco.EnFavoritos)
+                {
+                    MessageBox.Show($"Disco añadido a favoritos: {selectedDisco.Titulo}");
+                    FavoritosGlobal.AddToFavoritos(selectedDisco);
+                }
+                else
+                {
+                    MessageBox.Show($"Disco eliminando de favoritos: {selectedDisco.Titulo}");
+                    FavoritosGlobal.RemoveFromFavoritos(selectedDisco);
+                }
             }
         }
 
+        private void BtnMain_Click(object sender, RoutedEventArgs e)
+        {
+            UserMainWindow userMainWindow = new UserMainWindow();
+            WindowManager.UserMainWindowInstance = userMainWindow;
+            WindowManager.UserMainWindowInstance.Show();
+            this.Hide();
+        }
+        private void BtnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            Help help = new Help();
+            WindowManager.HelpInstance = help;
+            WindowManager.HelpInstance.Show();
+            this.Hide();
+        }
+        private void BtnCerrarSesion_Click(object sender, RoutedEventArgs e)
+        {
+            // Cerrar sesión y redirigir a la MainWindow
+            MessageBox.Show("Cerrando sesión...");
+            LoginWindow loginWindow = new LoginWindow();
+            WindowManager.LoginWindowInstance = loginWindow;
+            WindowManager.LoginWindowInstance.Show();
+            this.Hide();
+        }
+        private void BtnCarrito_Click(object sender, RoutedEventArgs e)
+        {
+            CarritoCompra carritoCompra = new CarritoCompra();
+            WindowManager.CarritoCompraInstance = carritoCompra;
+            WindowManager.CarritoCompraInstance.Show();
+            this.Hide();
+        }
     }
+    public static class FavoritosGlobal
+    {
+        public static List<DiscoVinilo> Favoritos { get; } = new List<DiscoVinilo>();
+        public static void AddToFavoritos(DiscoVinilo disco)
+        {
+            if (!Favoritos.Contains(disco))
+            {
+                Favoritos.Add(disco);
+            }
+        }
+        public static void RemoveFromFavoritos(DiscoVinilo disco)
+        {
+            if (Favoritos.Contains(disco))
+            {
+                Favoritos.Remove(disco);
+            }
+        }
+    }
+    public class FavoritoToImageConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is bool enFavoritos && enFavoritos)
+            {
+                return new BitmapImage(new Uri("pack://application:,,,/Imagenes/corazon2.png"));
+            }
+            return new BitmapImage(new Uri("pack://application:,,,/Imagenes/corazon.png"));
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
 }

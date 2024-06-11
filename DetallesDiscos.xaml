@@ -5,38 +5,69 @@
     x:Class="AppVinilos.DetallesDiscos"
     Title="Detalles de Discos" Height="800" Width="1000">
     <Grid>
-        <!-- Lista de Discos -->
-        <ListBox x:Name="listBoxDiscos" HorizontalAlignment="Left" VerticalAlignment="Top" Width="990" Height="372" BorderThickness="0,0,0,0" Background="White" Margin="0,170,0,0" av:ItemsSource="{av:SampleData ItemCount=5}">
+        <!-- Fila superior con encabezados -->
+        <Grid VerticalAlignment="Top" HorizontalAlignment="Center" Height="165" Width="1000">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Imagenes/7.jpg" Stretch="UniformToFill"/>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" Click="BtnMain_Click" Margin="0,0,120,0" BorderThickness="0" Height="64" Width="64">
+                <Button.Background>
+                    <ImageBrush ImageSource="Imagenes/House-2.png"/>
+                </Button.Background>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="3" Content="?" Click="BtnHelp_Click" Margin="70,2,90,0" BorderThickness="0" Background="Transparent" Foreground="White" FontSize="55" FontWeight="Bold"/>
+            <Button Grid.Row="0" Grid.Column="3" Content="" Click="BtnCerrarSesion_Click" Margin="120,0,0,0" BorderThickness="0" Foreground="White" FontSize="20" FontWeight="Bold" Height="45" Width="45">
+                <Button.Background>
+                    <ImageBrush ImageSource="Imagenes/exit.png"/>
+                </Button.Background>
+            </Button>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="{DynamicResource Portada}" Margin="10,10,16,10" Background="{x:Null}" FontSize="40" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{DynamicResource Titulo}" Margin="31,16,0,0" Background="{x:Null}" Foreground="White" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="{DynamicResource Autor}" Margin="62,16,0,0" Background="{x:Null}" FontSize="40" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+            <TextBlock Grid.Row="1" Grid.Column="3" Text="{DynamicResource Fecha}" Margin="79,0,0,0" Background="{x:Null}" Foreground="White" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        </Grid>
+
+        <ListBox x:Name="listBoxDiscos" HorizontalAlignment="Left" Width="1014" BorderThickness="0,0,0,0" Background="White" Margin="0,170,0,120" FontSize="5" av:ItemsSource="{av:SampleData ItemCount=5}" Grid.RowSpan="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal" Width="938" Height="92" >
-                        <!-- Imagen -->
-                        <Image Source="{Binding Portada}" Width="80" Height="80" Margin="50,5,100,5" />
-                        <!-- Propiedades de texto -->
-                        <TextBlock Text="{Binding Titulo}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,100,5" FontSize="30"/>
-                        <TextBlock Text="{Binding Autor}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,100,5" FontSize="30"/>
-                        <TextBlock Text="{Binding Fecha}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,5" FontSize="30"/>
-                    </StackPanel>
+                    <Grid>
+                        <!-- Define las filas y columnas como antes -->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="45"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Row="0" Grid.Column="0" Source="{Binding Portada}" Margin="5,0,0,10" Grid.RowSpan="2"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Titulo}" TextAlignment="Left" VerticalAlignment="Top" Margin="25,34,10,0" FontSize="20" Grid.RowSpan="2"/>
+                        <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Autor}" TextAlignment="Left" VerticalAlignment="Top" Margin="35,34,0,0" FontSize="20" Grid.RowSpan="2"/>
+                        <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding Fecha, StringFormat='dd/MM/yyyy'}" TextAlignment="Left" VerticalAlignment="Top" Margin="35,29,0,0" FontSize="20" Grid.RowSpan="2"/>
+                        <!-- Línea horizontal -->
+                        <Rectangle Grid.Row="1" Grid.ColumnSpan="4" Height="1" Fill="LightGray" Margin="5,0,0,0" VerticalAlignment="Bottom"/>
+                    </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
-        <!-- Fila superior con encabezados -->
-        <UniformGrid Columns="4" VerticalAlignment="Top" HorizontalAlignment="Center" Height="165" Width="1000">
-            <UniformGrid.Background>
-                <ImageBrush ImageSource="/Imagenes/librerias.jpg" Stretch="UniformToFill"/>
-            </UniformGrid.Background>
-            <TextBlock Text="Portada" Margin="10,10,16,10" Background="{x:Null}" FontSize="40" FontWeight="Bold"  Foreground="White" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
-            <TextBlock Text="Titulo" Margin="-11,10,18,10" Background="{x:Null}"  Foreground="White" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
-            <TextBlock Text="Autor" Margin="-18,10,25,10" Background="{x:Null}"  FontSize="40" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
-            <TextBlock Text="Fecha" Margin="-20,10,0,10" Background="{x:Null}"  Foreground="White" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </UniformGrid>
-
-        <!-- Botones para Crear, Editar y Borrar -->
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="46,615,0,0" Orientation="Horizontal" Height="120" Width="638">
-            <Button Content="Editar Disco" Click="BtnEditarDisco_Click" Margin="0,5,50,5" Width="169" FontSize="25"/>
-            <Button Content="Borrar Disco" Click="BtnBorrarDisco_Click" Margin="0,5,50,5" Width="169" FontSize="25"/>
-            <Button Content="Crear Disco" Click="BtnCrearDisco_Click" Margin="0,5,5,5" Width="169" FontSize="25"/>
+        <!-- Botones inferiores -->
+        <StackPanel Margin="10,661,352,0" Orientation="Horizontal">
+            <Button Content="{DynamicResource EditarDisco}"  Click="BtnEditarDisco_Click" Margin="0,5,50,5" Width="169" Height="80" FontSize="20" Background="#FF4E2828" BorderThickness="2,2,2,2"/>
+            <Button Content="{DynamicResource BorrarDisco}" Click="BtnBorrarDisco_Click" Margin="0,5,50,5" Width="169" Height="80" FontSize="25" BorderThickness="2,2,2,2" Background="#FF4E2828"/>
+            <Button Content="{DynamicResource CrearDisco}" Click="BtnCrearDisco_Click" Margin="0,5,5,5" Width="169" Height="80" FontSize="25" Background="#FF4E2828" BorderThickness="2,2,2,2"/>
         </StackPanel>
     </Grid>
 </Window>

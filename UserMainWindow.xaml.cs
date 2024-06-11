@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,41 +22,83 @@ namespace AppVinilos
         {
             InitializeComponent();
         }
+        private void BtnMain_Click(object sender, RoutedEventArgs e)
+        {
+            UserMainWindow userMainWindow = new UserMainWindow();
+            WindowManager.UserMainWindowInstance = userMainWindow;
+            WindowManager.UserMainWindowInstance.Show();
+            this.Hide();
+        }
         private void BtnHelp_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("¡Bienvenido a la ayuda!");
-            // Aquí puedes agregar la lógica de la ayuda
+            Help help = new Help();
+            WindowManager.HelpInstance = help;
+            WindowManager.HelpInstance.Show();
+            this.Hide();
         }
         private void BtnCerrarSesion_Click(object sender, RoutedEventArgs e)
         {
             // Cerrar sesión y redirigir a la MainWindow
             MessageBox.Show("Cerrando sesión...");
-            // Puedes agregar aquí la lógica para cerrar sesión y redirigir a la MainWindow si es necesario
+            LoginWindow loginWindow = new LoginWindow();
+            WindowManager.LoginWindowInstance = loginWindow;
+            WindowManager.LoginWindowInstance.Show();
+            this.Hide();
         }
         private void BtnCarrito_Click(object sender, RoutedEventArgs e)
         {
             CarritoCompra carritoCompra = new CarritoCompra();
-            carritoCompra.Show();
+            WindowManager.CarritoCompraInstance = carritoCompra;
+            WindowManager.CarritoCompraInstance.Show();
+            this.Hide();
         }
         private void BtnTienda_Click(object sender, RoutedEventArgs e)
         {
             DiscosDisponibles discosDisponibles = new DiscosDisponibles();
-            discosDisponibles.Show();
+            WindowManager.DiscosDisponiblesInstance = discosDisponibles;
+            WindowManager.DiscosDisponiblesInstance.Show();
+            this.Hide();
         }
-        private void BtnListaDeseos_Click(object sender, RoutedEventArgs e)
+        private void BtnArtistas_Click(object sender, RoutedEventArgs e)
         {
-            // Llevar la lista de deseos
-            MessageBox.Show("Cerrando sesión...");
+            ArtistasDisponibles artistasDisponibles = new ArtistasDisponibles();
+            WindowManager.ArtistasDisponiblesInstance = artistasDisponibles;
+            WindowManager.ArtistasDisponiblesInstance.Show();
+            this.Hide();
         }
         private void BtnListaFavoritos_Click(object sender, RoutedEventArgs e)
         {
-            // Llevar la lista de favoritos
-            MessageBox.Show("Cerrando sesión...");
+            FavoritosWindow favoritos = new FavoritosWindow();
+            WindowManager.FavoritosWindowInstance = favoritos;
+            WindowManager.FavoritosWindowInstance.Show();
+            this.Hide();
+        }
+        private void BtnOfertas_Click(object sender, RoutedEventArgs e)
+        {
+            Ofertas ofertas = new Ofertas();
+            WindowManager.OfertasWindowInstance = ofertas;
+            WindowManager.OfertasWindowInstance.Show();
+            this.Hide();
         }
         private void BtnHistorialCompras_Click(object sender, RoutedEventArgs e)
         {
-            // Llevar al historial de compras
-            MessageBox.Show("Cerrando sesión...");
+            HistorialPedidos historial = new HistorialPedidos();
+            WindowManager.HistorialPedidosInstance = historial;
+            WindowManager.HistorialPedidosInstance.Show();
+            this.Hide();
+        }
+        private void combobox_language_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cbi = (ComboBoxItem)combobox_language.SelectedItem; string selectedText = cbi.Content.ToString();
+            if ((selectedText.Equals("ES") || selectedText.Equals("SP")) && !CultureInfo.CurrentCulture.Name.Equals("es-ES"))
+            {
+                Resources.MergedDictionaries.Add(App.SelectCulture("es-ES"));
+            }
+            else if (selectedText.Equals("EN")
+            && !CultureInfo.CurrentCulture.Name.Equals("en-US"))
+            {
+                Resources.MergedDictionaries.Add(App.SelectCulture("en-US"));
+            }
         }
     }
 }

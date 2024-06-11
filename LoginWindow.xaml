@@ -3,23 +3,51 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Login" Height="800" Width="1000">
     <Grid>
-        <!-- Imagen de fondo -->
-        <Image Source="/Imagenes/librerias.jpg" Margin="0,0,0,561" Stretch="UniformToFill" HorizontalAlignment="Left" Width="997" RenderTransformOrigin="0.835,0.969"/>
-        <!-- Contenedor principal -->
-        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Width="808" Height="574" Margin="98,231,0,0">
-            <!-- Contenido del formulario de inicio de sesión -->
-            <TextBlock Text="Iniciar Sesión" HorizontalAlignment="Center" FontSize="50" FontWeight="Bold" Margin="0 0 0 20"/>
-            <RadioButton GroupName="TipoUsuario" Content="Usuario" IsChecked="True" Margin="50 0 0 5" FontSize="30"/>
-            <RadioButton x:Name="Administrador" GroupName="TipoUsuario" Content="Administrador" Margin="50 0 0 10" FontSize="30"/>
-            <TextBox Name="txtUsername" Text="" GotFocus="ClearText" LostFocus="RestoreText" Margin="50 0 50 5" FontSize="30"/>
-            <PasswordBox Name="txtPassword" Password="Contraseña" GotFocus="ClearPassword" LostFocus="RestorePassword" Margin="50 0 50 20" FontSize="30"/>
-            <Button Content="Iniciar Sesión" Click="BtnLogin_Click" Width="220" Margin="0 0 0 10" FontSize="30" Height="62"/>
-            <TextBlock Name="lblErrorMessage" Foreground="Red" Height="53"/>
-            <TextBlock Text="¿No tienes una cuenta?" Height="37" Width="258" FontSize="24"/>
-            <Button Content="Registrarse" Click="BtnRegistrarse_Click" Width="182" FontSize="30" Height="50"/>
-        </StackPanel>
+        <!-- Imagen de fondo que se adapta al tamaño de la ventana -->
+        <Image Source="/Imagenes/5.jpg" Stretch="UniformToFill" Grid.Row="0" Grid.Column="0" Height="200" VerticalAlignment="Top"/>
+
+        <!-- Contenedor principal con fondo semitransparente para mejorar la legibilidad -->
+        <Grid Margin="234,178,211,-2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="IniciarSesión" Text="{DynamicResource IniciarSesión}" HorizontalAlignment="Center" FontSize="50" FontWeight="Bold" Margin="0,100,0,20" Grid.Row="0"/>
+
+            <ComboBox x:Name="combobox_language" Margin="163,27,191,95" TabIndex="3" Background="#FF4E2828" SelectionChanged="combobox_language_SelectionChanged" FontSize="25" SelectedIndex="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="1" BorderBrush="#FF4E2828" Foreground="White">
+                <ComboBox.Resources>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Background" Value="#FF4E2828"/>
+                        <Setter Property="Foreground" Value="Black"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    </Style>
+                </ComboBox.Resources>
+                <ComboBoxItem x:Name="cbItem1" Content="ES"/>
+                <ComboBoxItem x:Name="cbItem2" Content="EN"/>
+            </ComboBox>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,0,0,20">
+                <RadioButton x:Name="Usuario" Content="{DynamicResource Usuario}" GroupName="TipoUsuario" IsChecked="True" FontSize="30" Margin="10,0"/>
+                <RadioButton x:Name="Administrador" Content="{DynamicResource Administrador}" GroupName="TipoUsuario" FontSize="30" Margin="10,0"/>
+            </StackPanel>
+
+            <TextBox Name="txtUsername" Text="" GotFocus="ClearText" LostFocus="RestoreText" FontSize="30" Margin="50,0,50,5" Grid.Row="2" Width="400" HorizontalAlignment="Center"/>
+            <PasswordBox Name="txtPassword" Password="Contraseña" GotFocus="ClearPassword" LostFocus="RestorePassword" FontSize="30" Margin="50,10,50,20" Grid.Row="3" Width="400" HorizontalAlignment="Center"/>
+
+            <Button x:Name="btnInicSes" Content="{DynamicResource btnInicSes}" Click="BtnLogin_Click" Width="220" FontSize="30" Height="62" Margin="0,0,0,0" Grid.Row="4" HorizontalAlignment="Center" Background="#FF4E2828"/>
+            <TextBlock Name="lblErrorMessage" Foreground="Red" Grid.Row="5" HorizontalAlignment="Center" Height="53"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="6" Margin="0,20,0,0">
+                <TextBlock x:Name="lblNoSesion" Text="{DynamicResource lblNoSesion}" Height="37" Width="258" FontSize="24" VerticalAlignment="Center"/>
+                <Button x:Name="Register" Content="{DynamicResource Register}" Click="BtnRegistrarse_Click" Width="182" FontSize="30" Height="50" Margin="10,0" Background="#FF4E2828"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
-
-
-

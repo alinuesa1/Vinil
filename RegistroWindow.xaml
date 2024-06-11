@@ -3,15 +3,31 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Registro" Height="800" Width="1000">
     <Grid>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="574">
-            <TextBlock Text="            Registro de Usuario" FontSize="50" FontWeight="Bold" Height="106" Width="841" HorizontalAlignment="Center" Margin="0 50 0 50"/>
-            <TextBox x:Name="txtNuevoUsuario" Text="Nuevo Usuario" GotFocus="ClearText" LostFocus="RestoreText" Margin="0 0 0 5" FontSize="30"/>
-            <PasswordBox x:Name="txtNuevaContraseña" Password="Nueva Contraseña" GotFocus="ClearPassword" LostFocus="RestorePassword" Margin="0 0 0 50" FontSize="30"/>
-            <Button Content="Registrarse" Click="BtnRegistrarse_Click" Width="258" Height="76" FontSize="30"/>
-            <TextBlock x:Name="lblRegistroMensaje" Foreground="Green"/>
-        </StackPanel>
+        <!-- Fondo de imagen -->
+        <Grid.Background>
+            <ImageBrush ImageSource="Imagenes/4.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+
+        <!-- Contenedor principal con fondo semi-transparente -->
+        <Grid Background="#80000000">
+            <Grid.RowDefinitions>
+                <!-- Definición de filas -->
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Cabecera -->
+            <Border Grid.Row="0" Background="#FF4E2828">
+                <TextBlock Text="Registro de Usuario" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            </Border>
+
+            <!-- Contenido del registro -->
+            <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,50,0,0">
+                <TextBox x:Name="txtNuevoUsuario" Text="Nuevo Usuario" GotFocus="ClearText" LostFocus="RestoreText" Margin="0 0 0 5" FontSize="30"/>
+                <PasswordBox x:Name="txtNuevaContraseña" Password="Nueva Contraseña" GotFocus="ClearPassword" LostFocus="RestorePassword" Margin="0 0 0 50" FontSize="30"/>
+                <Button Content="Registrarse" Click="BtnRegistrarse_Click" Width="258" Height="76" FontSize="30" Background="#FF4E2828"/>
+                <TextBlock x:Name="lblRegistroMensaje" Foreground="White" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
-
-
-

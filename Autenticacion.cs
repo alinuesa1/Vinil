@@ -7,7 +7,7 @@ public static class Autenticacion
     {
 
         // Verificar si las credenciales coinciden con el conjunto específico de administrador
-        if (username == "admin" && password == "admin123")
+        if (username == "2" && password == "2")
         {
             return true;  // Credenciales válidas para el administrador
         }
@@ -22,7 +22,7 @@ public static class Autenticacion
     public static bool EsAdmin(string username)
     {
         // Lógica para determinar si el usuario es administrador
-        return username == "admin";
+        return username == "2";
     }
 }
 

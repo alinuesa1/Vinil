@@ -1,0 +1,75 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="AppVinilos.MasDetallesArtistas"
+        Title="Más Detalles de Artista" Height="600" Width="1000">
+    <Grid>
+        <!-- Definición de filas -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabecera con el nombre del artista y fondo de imagen -->
+        <Grid Grid.Row="0" Height="150" RenderTransformOrigin="0.492,0.474">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Imagenes/3.jpg" Stretch="UniformToFill"/>
+            </Grid.Background>
+            <TextBlock Text="{Binding NombreArtistico}" 
+                       FontSize="24" FontWeight="Bold" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Margin="10" Foreground="White"/>
+        </Grid>
+
+        <!-- Grid inferior dividido en tres columnas -->
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Información detallada con scrollbar en la primera columna -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="0" Margin="10">
+                <StackPanel>
+                    <TextBlock Text="Nombre Real:" FontWeight="Bold" FontSize="18"/>
+                    <TextBlock Text="{Binding NombreReal}" FontSize="16" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Fecha de Nacimiento o Creación:" FontWeight="Bold" FontSize="18"/>
+                    <TextBlock Text="{Binding FechaNacimientoOCreacion, StringFormat=\{0:dd/MM/yyyy\}}" FontSize="16" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Descripción:" FontWeight="Bold" FontSize="18"/>
+                    <TextBlock Text="{Binding Descripcion}" FontSize="16" Margin="0,0,0,10" TextWrapping="Wrap" MaxHeight="300" TextTrimming="WordEllipsis" Height="53"/>
+
+                    <TextBlock Text="Género Musical:" FontWeight="Bold" FontSize="18"/>
+                    <TextBlock Text="{Binding GeneroMusical}" FontSize="16" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Número de Favoritos:" FontWeight="Bold" FontSize="18"/>
+                    <TextBlock Text="{Binding NumeroFavoritos}" FontSize="16" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Componentes:" FontWeight="Bold" FontSize="18"/>
+                    <TextBlock Text="{Binding Componentes}" FontSize="16" Margin="0,0,0,10"/>
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Imagenes del artista centradas en la columna del medio -->
+            <StackPanel Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <Image Source="{Binding GaleriaImagenes[0]}" 
+                       Height="200" 
+                       Margin="0,10"/>
+                <Image Source="{Binding GaleriaImagenes[1]}" 
+                       Height="200" 
+                       Margin="0,10"/>
+            </StackPanel>
+
+            <!-- ListBox con la discografía en la tercera columna -->
+            <ListBox ItemsSource="{Binding Discografia}" Grid.Column="2" Margin="10" av:ItemsSource="{av:SampleData ItemCount=5}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Titulo}" FontSize="16"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </Grid>
+</Window>

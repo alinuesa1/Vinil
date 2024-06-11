@@ -1,0 +1,41 @@
+﻿<Window
+    x:Class="AppVinilos.NuevaOfertaDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Nueva Oferta" Height="650" Width="600">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="10">
+            <TextBlock Text="Título:" FontSize="16" Margin="0,0,0,10"/>
+            <TextBox x:Name="txtTitulo" FontSize="16" Margin="0,0,0,20"/>
+
+            <TextBlock Text="Descripción:" FontSize="16" Margin="0,0,0,10"/>
+            <TextBox x:Name="txtDescripcion" FontSize="16" Margin="0,0,0,20"/>
+
+            <TextBlock Text="Descuento:" FontSize="16" Margin="0,0,0,10"/>
+            <TextBox x:Name="txtDescuento" FontSize="16" Margin="0,0,0,20"/>
+
+            <TextBlock Text="Destinatarios:" FontSize="16" Margin="0,0,0,10"/>
+            <TextBox x:Name="txtDestinatarios" FontSize="16" Margin="0,0,0,20"/>
+
+            <TextBlock Text="Fecha de Envío:" FontSize="16" Margin="0,0,0,10"/>
+            <DatePicker x:Name="dpFechaEnvio" FontSize="16" Margin="0,0,0,20"/>
+            <TextBlock Text="Hora de Envío:" FontSize="16" Margin="0,0,0,10"/>
+            <TextBox x:Name="txtHoraEnvio" FontSize="16" Margin="0,0,0,20"/>
+
+            <TextBlock Text="Imagen:" FontSize="16" Margin="0,0,0,10"/>
+            <Button Content="Seleccionar Imagen" Click="SeleccionarImagen_Click" Width="150" HorizontalAlignment="Left" Background="#FF4E2828" Foreground="Black" Height="30"/>
+        
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+            <Button Content="Cancelar" Click="Cancelar_Click" Width="100" Height="30" Margin="5" Background="#FF4E2828" Foreground="Black"/>
+            <Button Content="Aceptar" Click="Aceptar_Click" Width="100" Height="30" Margin="5" Background="#FF4E2828" Foreground="Black"/>
+        </StackPanel>
+    </Grid>
+</Window>

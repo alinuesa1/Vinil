@@ -1,0 +1,82 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!-- Login Window -->
+    <sys:String x:Key="IniciarSesión">Log in</sys:String>
+    <sys:String x:Key="Usuario">User</sys:String>
+    <sys:String x:Key="Administrador">Administrator</sys:String>
+    <sys:String x:Key="btnInicSes">Log In</sys:String>
+    <sys:String x:Key="lblNoSesion">No acount yet?</sys:String>
+    <sys:String x:Key="Register">Register</sys:String>
+
+    <!-- AdminMain Window -->
+    <sys:String x:Key="GestDiscos">Manage Discs</sys:String>
+    <sys:String x:Key="GestArtistas">Manage Artists</sys:String>
+    <sys:String x:Key="GestOfertas">Manage Offers</sys:String>
+    <sys:String x:Key="HistPedidos">Order History</sys:String>
+    <sys:String x:Key="UsuarioNombre">User Name</sys:String>
+    <sys:String x:Key="UltimoInic">Last Log in</sys:String>
+
+    <!-- DetallesDiscos Window -->
+    <sys:String x:Key="Portada">Cover</sys:String>
+    <sys:String x:Key="Titulo">Tittle</sys:String>
+    <sys:String x:Key="Autor">Artist</sys:String>
+    <sys:String x:Key="Fecha">Date</sys:String>
+    <sys:String x:Key="EditarDisco">Edit Vinil</sys:String>
+    <sys:String x:Key="BorrarDisco">Delete Vinil</sys:String>
+    <sys:String x:Key="CrearDisco">Create Vinil</sys:String>
+
+    <sys:String x:Key="Precio">Price</sys:String>
+    <sys:String x:Key="NumeroCanc">Number of songs</sys:String>
+    <sys:String x:Key="Calificacion">Rate</sys:String>
+    <sys:String x:Key="UnidDispo">Available units</sys:String>
+    <sys:String x:Key="Canciones">Songs</sys:String>
+    <sys:String x:Key="Preview">Preview</sys:String>
+    <sys:String x:Key="Guardar">Save</sys:String>
+    <sys:String x:Key="Cancelar">Cancel</sys:String>
+
+    <!-- DetallesArtistas Window -->
+    <sys:String x:Key="Imagen">Image</sys:String>
+    <sys:String x:Key="Nombre">Name</sys:String>
+    <sys:String x:Key="Genero">Genre</sys:String>
+    <sys:String x:Key="Favoritos">Favorites</sys:String>
+    <sys:String x:Key="EditarArtista">Edit Artist</sys:String>
+    <sys:String x:Key="BorrarArtista">Delete Artist</sys:String>
+    <sys:String x:Key="CrearArtista">Create Artist</sys:String>
+
+    <sys:String x:Key="NombreReal">Real name</sys:String>
+    <sys:String x:Key="Componentes">Components</sys:String>
+    <sys:String x:Key="Fecha2">Born time or creation</sys:String>
+    <sys:String x:Key="Descripcion">Description</sys:String>
+    <sys:String x:Key="Enlaces">Links to social media</sys:String>
+    <sys:String x:Key="Discografia">Discography</sys:String>
+
+    <sys:String x:Key="AgregarOferta">Add new offer</sys:String>
+    <sys:String x:Key="Detallepedido">Details from orders</sys:String>
+
+
+    <!-- UserMain Window -->
+    <sys:String x:Key="Discos">Vinils</sys:String>
+    <sys:String x:Key="Artistas">Artists</sys:String>
+    <sys:String x:Key="Ofertas">Offers</sys:String>
+    <sys:String x:Key="Historial">Historic</sys:String>
+
+    <sys:String x:Key="Id">Id order</sys:String>
+    <sys:String x:Key="Total">Total</sys:String>
+    <sys:String x:Key="Estado">Status</sys:String>
+
+    <sys:String x:Key="Pago">Payment</sys:String>
+    <sys:String x:Key="DireccionEnvio">Shipping address</sys:String>
+    <sys:String x:Key="Apellidos">Surname</sys:String>
+    <sys:String x:Key="Direccion">Address</sys:String>
+    <sys:String x:Key="CodPost">Post code</sys:String>
+    <sys:String x:Key="Localidad">City</sys:String>
+    <sys:String x:Key="Provincia">Province</sys:String>
+    <sys:String x:Key="Telefon">Phone number</sys:String>
+    <sys:String x:Key="email">E-mail</sys:String>
+    <sys:String x:Key="Infoextra">Additional information</sys:String>
+    <sys:String x:Key="Resumen">Order summary</sys:String>
+    <sys:String x:Key="Opciones">Payment options</sys:String>
+    <sys:String x:Key="irpago">Proceed to pay</sys:String>
+
+
+</ResourceDictionary>

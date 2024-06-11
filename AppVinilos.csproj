@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ArtistasDisponibles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CarritoCompra.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -79,7 +83,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditarArtistas.xaml">
+    <Page Include="EditarArtista.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -87,7 +91,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GestionarOfertasControl.xaml">
+    <Page Include="FavoritosWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GestionarOfertas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Help.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HistorialPedidos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -99,6 +115,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MasDetalles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MasDetallesArtistas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NuevaOfertaDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ofertas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pago.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,6 +139,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Resource Include="Resources\StringResources.es-ES.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\StringResources.en-US.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Page Include="UserMainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -119,10 +161,39 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="Artista.cs" />
+    <Compile Include="ArtistasDisponibles.xaml.cs">
+      <DependentUpon>ArtistasDisponibles.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Autenticacion.cs" />
     <Compile Include="CarritoCompra.xaml.cs">
       <DependentUpon>CarritoCompra.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DiscosData.cs" />
+    <Compile Include="DiscoVinilo.cs" />
+    <Compile Include="FavoritosWindow.xaml.cs">
+      <DependentUpon>FavoritosWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Help.xaml.cs">
+      <DependentUpon>Help.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialPedidos.xaml.cs">
+      <DependentUpon>HistorialPedidos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ArtistaData.cs" />
+    <Compile Include="MasDetalles.xaml.cs">
+      <DependentUpon>MasDetalles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MasDetallesArtistas.xaml.cs">
+      <DependentUpon>MasDetallesArtistas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NuevaOfertaDialog.xaml.cs">
+      <DependentUpon>NuevaOfertaDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ofertas.xaml.cs">
+      <DependentUpon>Ofertas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowManager.cs" />
     <Compile Include="CrearArtista.xaml.cs">
       <DependentUpon>CrearArtista.xaml</DependentUpon>
     </Compile>
@@ -138,14 +209,14 @@
     <Compile Include="DiscosDisponibles.xaml.cs">
       <DependentUpon>DiscosDisponibles.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditarArtistas.xaml.cs">
-      <DependentUpon>EditarArtistas.xaml</DependentUpon>
+    <Compile Include="EditarArtista.xaml.cs">
+      <DependentUpon>EditarArtista.xaml</DependentUpon>
     </Compile>
     <Compile Include="EditarDiscos.xaml.cs">
       <DependentUpon>EditarDiscos.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GestionarOfertasControl.xaml.cs">
-      <DependentUpon>GestionarOfertasControl.xaml</DependentUpon>
+    <Compile Include="GestionarOfertas.xaml.cs">
+      <DependentUpon>GestionarOfertas.xaml</DependentUpon>
     </Compile>
     <Compile Include="HistorialPedidosControl.xaml.cs">
       <DependentUpon>HistorialPedidosControl.xaml</DependentUpon>
@@ -205,27 +276,120 @@
     <Resource Include="Imagenes\YHLQMDLG.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Imagenes\azulclaro.png" />
-    <Resource Include="Imagenes\facebook_profile_image.png" />
-    <Resource Include="Imagenes\logo_transparent.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Imagenes\librerias.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Imagenes\disco-vinilo-aislado.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\carrito.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Imagenes\disco oro.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Imagenes\disco-oro.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Imagenes\libros.jpg" />
+    <Resource Include="Imagenes\mastercard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\LogoPaypal.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Bizum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\cesta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\1.jpg" />
+    <Resource Include="Imagenes\2.jpg" />
+    <Resource Include="Imagenes\3.jpg" />
+    <Resource Include="Imagenes\4.jpg" />
+    <Resource Include="Imagenes\5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\6.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\7.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\8.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\gaviotas.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\bravo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\House-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\back_in_black.jpg" />
+    <Resource Include="Imagenes\dark_side_of_the_moon.jpg" />
+    <Resource Include="Imagenes\hotel_california.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\abbey_road.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\corazon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\corazon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\24K.jpg" />
+    <Resource Include="Imagenes\Queen.jpg" />
+    <Resource Include="Imagenes\Rammstein.jpg" />
+    <Resource Include="Imagenes\Tim.jpg" />
+    <Resource Include="Imagenes\Yo,Minoria.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\BlackFriday.png" />
+    <Resource Include="Imagenes\OfertaVerano.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\beatles1.jpg" />
+    <Resource Include="Imagenes\beatles2.jpg" />
+    <Resource Include="Imagenes\NigthAtOpera.jpg" />
+    <Resource Include="Imagenes\pinkfloyd1.jpg" />
+    <Resource Include="Imagenes\pinkfloyd2.jpg" />
+    <Resource Include="Imagenes\queen2.jpg" />
+    <Resource Include="Imagenes\sgtpepper.jpg" />
+    <Resource Include="Imagenes\thegame.png" />
+    <Resource Include="Imagenes\wishyouwerehere.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\11.jpg" />
+    <Resource Include="Imagenes\12.jpg" />
+    <Resource Include="Imagenes\13.jpg" />
+    <Resource Include="Imagenes\9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\mapa.png" />
+    <Resource Include="Imagenes\cart.png" />
+    <Resource Include="Imagenes\play.jpg" />
+    <Resource Include="Imagenes\14.jpg" />
+    <Resource Include="Imagenes\15.jpg" />
+    <Content Include="Music\back_in_black.mp3" />
+    <Content Include="Music\bohemian_rhapsody.mp3" />
+    <Content Include="Music\dark_side_of_the_moon.mp3" />
+    <Content Include="Music\HereComesTheSun.mp3" />
+    <Content Include="Music\hotel_california.mp3" />
+    <Content Include="Music\rammstein.mp3" />
+    <Content Include="Music\thriller.mp3" />
+    <Content Include="Music\tim.mp3" />
+    <Content Include="Music\yhlqmdlg.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

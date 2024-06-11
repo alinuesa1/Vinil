@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:AppVinilos"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="resources/StringResources.en-US.xaml" />
+                <ResourceDictionary Source="resources/StringResources.es-ES.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

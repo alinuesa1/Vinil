@@ -22,9 +22,11 @@ namespace AppVinilos
         }
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            
             LoginWindow loginWindow = new LoginWindow();
-            loginWindow.Show();
+            WindowManager.LoginWindowInstance = loginWindow;
+            
+            WindowManager.LoginWindowInstance.Show();
+            this.Hide();
         }
     }
 }

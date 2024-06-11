@@ -3,7 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="800" Width="1000">
     <Grid>
-        <Image Source="/Imagenes/librerias.jpg" Stretch="UniformToFill" Margin="0,-88,2,0"/>
-        <Button Content="Iniciar Sesión" Width="442" Height="136" HorizontalAlignment="Center" VerticalAlignment="Top" Click="BtnLogin_Click" Margin="0,392,0,0" FontSize="60" Background="White"/>
+        <Image Source="/Imagenes/4.jpg" Stretch="UniformToFill" Margin="0,-88,2,0">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="Imagenes/4.jpg" Stretch="None"/>
+            </Image.OpacityMask>
+        </Image>
+        <Button Content="Iniciar Sesión" Width="442" Height="136" HorizontalAlignment="Center" VerticalAlignment="Top" Click="BtnLogin_Click" Margin="0,392,0,0" FontSize="60" Background="#FF4E2828"/>
     </Grid>
 </Window>

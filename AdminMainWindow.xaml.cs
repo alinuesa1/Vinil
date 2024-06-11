@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,13 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using System.Windows;
-
-using System.Windows;
-using System.Windows.Controls;
-
-using System.Windows;
-
 namespace AppVinilos
 {
     public partial class AdminMainWindow : Window
@@ -32,46 +26,73 @@ namespace AppVinilos
         {
             // Abrir la ventana de gestionar discos
             DetallesDiscos detallesDiscos = new DetallesDiscos();
-            detallesDiscos.ShowDialog();
+            WindowManager.DetallesDiscosInstance = detallesDiscos;
+            WindowManager.DetallesDiscosInstance.Show();
+            this.Hide();
         }
 
         private void GestionarArtistas_Click(object sender, RoutedEventArgs e)
         {
             // Abrir la ventana de gestionar artistas
             DetallesArtistas gestionarArtistasWindow = new DetallesArtistas();
-            gestionarArtistasWindow.ShowDialog();
+            WindowManager.DetallesArtistasInstance = gestionarArtistasWindow;
+            WindowManager.DetallesArtistasInstance.Show();
+            this.Hide();
         }
 
         private void GestionarOfertas_Click(object sender, RoutedEventArgs e)
         {
             // Abrir la ventana de gestionar ofertas
-            GestionarOfertasControl gestionarOfertasWindow = new GestionarOfertasControl();
-            gestionarOfertasWindow.ShowDialog();
+            GestionarOfertas gestionarOfertasWindow = new GestionarOfertas();
+            WindowManager.GestionarOfertasControlInstance = gestionarOfertasWindow;
+            WindowManager.GestionarOfertasControlInstance.Show();
+            this.Hide();
         }
 
         private void HistorialPedidos_Click(object sender, RoutedEventArgs e)
         {
             // Abrir la ventana de historial de pedidos
             HistorialPedidosControl historialPedidosWindow = new HistorialPedidosControl();
-            historialPedidosWindow.ShowDialog();
+            WindowManager.HistorialPedidosControlInstance = historialPedidosWindow;
+            WindowManager.HistorialPedidosControlInstance.Show();
+            this.Hide();
         }
 
-        private void BtnVolver_Click(object sender, RoutedEventArgs e)
+        private void BtnMain_Click(object sender, RoutedEventArgs e)
         {
-            // Puedes agregar lógica para cerrar la ventana principal o implementar
-            // la navegación entre ventanas según tus necesidades.
-            Close();
+            AdminMainWindow adminMainWindow = new AdminMainWindow();
+            WindowManager.AdminMainWindowInstance = adminMainWindow;
+            WindowManager.AdminMainWindowInstance.Show();
+            this.Hide();
         }
         private void BtnHelp_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("¡Bienvenido a la ayuda!");
-            // Aquí puedes agregar la lógica de la ayuda
+            Help help = new Help();
+            WindowManager.HelpInstance = help;
+            WindowManager.HelpInstance.Show();
+            this.Hide();
         }
         private void BtnCerrarSesion_Click(object sender, RoutedEventArgs e)
         {
             // Cerrar sesión y redirigir a la MainWindow
             MessageBox.Show("Cerrando sesión...");
-            // Puedes agregar aquí la lógica para cerrar sesión y redirigir a la MainWindow si es necesario
+            LoginWindow loginWindow = new LoginWindow();
+            WindowManager.LoginWindowInstance = loginWindow;
+            WindowManager.LoginWindowInstance.Show();
+            this.Hide();
+        }
+        private void combobox_language_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cbi = (ComboBoxItem)combobox_language.SelectedItem; string selectedText = cbi.Content.ToString();
+            if ((selectedText.Equals("ES") || selectedText.Equals("SP")) && !CultureInfo.CurrentCulture.Name.Equals("es-ES"))
+            {
+                Resources.MergedDictionaries.Add(App.SelectCulture("es-ES"));
+            }
+            else if (selectedText.Equals("EN")
+            && !CultureInfo.CurrentCulture.Name.Equals("en-US"))
+            {
+                Resources.MergedDictionaries.Add(App.SelectCulture("en-US"));
+            }
         }
     }
 }

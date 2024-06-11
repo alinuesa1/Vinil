@@ -1,42 +1,85 @@
-﻿<!-- CarritoCompraWindow.xaml -->
-<Window
+﻿<Window
+    x:Class="AppVinilos.CarritoCompra"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="av"
-    x:Class="AppVinilos.CarritoCompra"
     Title="Carrito de Compra" Height="800" Width="1000">
     <Grid>
-        <!-- Lista de Discos -->
-        <ListBox x:Name="listViewCarrito" HorizontalAlignment="Left" VerticalAlignment="Top" Width="990" Height="510" BorderThickness="0,0,0,0" Background="White" Margin="0,170,0,0" av:ItemsSource="{av:SampleData ItemCount=5}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal" Width="938" Height="92" >
-                        <!-- Propiedades de texto -->
-                        <TextBlock Text="{Binding Titulo}" TextAlignment="Left" VerticalAlignment="Center" Margin="55,10,15,10" FontSize="30"/>
-                        <TextBlock Text="{Binding Autor}" TextAlignment="Left" VerticalAlignment="Center" Margin="55,10,15,10" FontSize="30"/>
-                        <TextBlock Text="{Binding Cantidad}" TextAlignment="Left" VerticalAlignment="Center" Margin="55,10,15,10" FontSize="30"/>
-                        <TextBlock Text="{Binding Precio}" TextAlignment="Left" VerticalAlignment="Center" Margin="155,10,15,10" FontSize="30"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal" Margin="10">
-            <Button Content="Ir al Pago" Click="IrAlPago_Click" Width="150" Height="40" Margin="10"/>
-            <Button Content="Ayuda" Click="Ayuda_Click" Width="150" Height="40" Margin="10"/>
-        </StackPanel>
         <!-- Fila superior con encabezados -->
         <Grid VerticalAlignment="Top" HorizontalAlignment="Center" Height="165" Width="1000">
             <Grid.Background>
-                <ImageBrush ImageSource="/Imagenes/libros.jpg" Stretch="UniformToFill"/>
+                <ImageBrush ImageSource="/Imagenes/2.jpg" Stretch="UniformToFill"/>
             </Grid.Background>
-            <UniformGrid Columns="5">
-                <TextBlock Text="Titulo" Margin="55,10,15,10" Background="{x:Null}" Foreground="White" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
-                <TextBlock Text="Autor" Margin="55,10,15,10" Background="{x:Null}" FontSize="40" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
-                <TextBlock Text="Cantidad" Margin="55,0,-29,0" Background="{x:Null}" Foreground="White" FontSize="40" FontWeight="Bold" VerticalAlignment="Center"/>
-                <TextBlock Text="Precio" Margin="85,0,-30,0" Background="{x:Null}" Foreground="White" FontSize="40" FontWeight="Bold" VerticalAlignment="Center"/>
-            </UniformGrid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Fila superior -->
+            <Button Grid.Row="0" Grid.Column="0" Click="BtnMain_Click" Margin="0,0,120,0" BorderThickness="0" Height="64" Width="64">
+                <Button.Background>
+                    <ImageBrush ImageSource="Imagenes/House-2.png"/>
+                </Button.Background>
+            </Button>
+            <Button Click="BtnCarrito_Click" Grid.Row="0" Grid.Column="4" DockPanel.Dock="Bottom" HorizontalAlignment="Left" Width="50" Height="50"  Margin="00,0,0,0" FontSize="25" BorderThickness="0">
+                <Button.Background>
+                    <ImageBrush ImageSource="Imagenes/cart.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="4" Content="?" Click="BtnHelp_Click" Margin="70,2,90,0" BorderThickness="0" Background="Transparent" Foreground="White" FontSize="55" FontWeight="Bold"/>
+            <Button Grid.Row="0" Grid.Column="4" Content="" Click="BtnCerrarSesion_Click" Margin="120,0,0,0" BorderThickness="0" Foreground="White" FontSize="20" FontWeight="Bold" Height="45" Width="45">
+                <Button.Background>
+                    <ImageBrush ImageSource="Imagenes/exit.png"/>
+                </Button.Background>
+            </Button>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Titulo" Margin="45,10,15,10" Foreground="White" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="Autor" Margin="45,10,15,10" FontSize="40" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="Fecha" Margin="65,0,-14,0" Foreground="White" FontSize="40" FontWeight="Bold" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="3" Text="Precio" Margin="100,0,174,0" Foreground="White" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+
         </Grid>
+        <!-- Lista de Discos -->
+        <ListBox x:Name="listBoxCarrito" BorderThickness="0,0,0,0" Background="White" Margin="0,170,0,0" HorizontalAlignment="Center" Width="998" Height="510" VerticalAlignment="Top" av:ItemsSource="{av:SampleData ItemCount=5}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="938" Height="92">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!-- Propiedades de texto -->
+                        <TextBlock Grid.Column="0" Text="{Binding Titulo}" VerticalAlignment="Center" Margin="15,10,15,10" FontSize="20"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Autor}" VerticalAlignment="Center" Margin="15,10,15,10" FontSize="20"/>
+                        <TextBlock Grid.Column="2" Text="{Binding Fecha, StringFormat={}{0:dd/MM/yyyy}}" VerticalAlignment="Center" Margin="15,10,15,10" FontSize="20"/>
+                        <TextBlock Grid.Column="3" Text="{Binding Precio}" VerticalAlignment="Center" Margin="82,0,15,0" FontSize="20"/>
+                        <TextBox Text="{Binding Cantidad, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="15,10,15,10" FontSize="20" Width="50" Grid.Column="4" BorderThickness="0,0,0,0" Background="{x:Null}" Opacity="0"/>
+                        <Button Content="" Click="RemoveFromCart_Click" Tag="{Binding}" Margin="15,24,15,21" Grid.Column="4"  RenderTransformOrigin="0.479,0.748" BorderThickness="0,0,0,0">
+                            <Button.Background>
+                                <ImageBrush ImageSource="Imagenes/cross.png"/>
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <!-- Total Precio -->
+        <TextBlock x:Name="totalPrecioTextBlock" Grid.Column="3" HorizontalAlignment="Center" Margin="500,0,0,30" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold"/>
+        <!-- Botones Inferiores -->
+        <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal" Margin="10">
+            <Button Content="Proceder al Pago" Click="IrAlPago_Click" Width="252" Height="54" Margin="10" Background="#FF4E2828" FontSize="30" BorderThickness="2"/>
+        </StackPanel>
     </Grid>
 </Window>
